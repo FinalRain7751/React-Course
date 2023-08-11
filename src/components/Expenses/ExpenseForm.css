@@ -1,0 +1,90 @@
+.expense__form {
+  --br: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  font-family: inherit;
+  font-size: 1.25rem;
+  width: 50rem;
+  max-width: 95%;
+  margin: 1.5rem auto;
+  padding: 2rem;
+  background-color: rgb(149, 113, 227);
+  border-radius: var(--br);
+}
+
+.expense__form--input {
+  display: flex;
+  flex-wrap: wrap;
+  /* gap: 2rem; */
+  row-gap: 1rem;
+  justify-content: space-between;
+}
+
+.expense__form--input:has(.expense__form--btn) {
+  justify-content: end;
+}
+
+.expense__form--input-field {
+  width: 40%;
+}
+
+.expense__form--input-field input {
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.5rem;
+  width: 100%;
+  outline: none;
+  height: 3rem;
+  /* border: none; */
+  border: 2px solid white;
+  border-radius: var(--br);
+}
+
+.expense__form--input-field input:focus {
+  border-color: blueviolet;
+}
+
+/* .expense__form--input-field input::placeholder {
+  font: inherit;
+  text-align: center;
+} */
+
+.expense__form--input-field label {
+  display: block;
+  font-weight: 600;
+  padding: 0.25rem;
+}
+
+.expense__form--btn {
+  display: block;
+  position: relative;
+  border: none;
+  font-size: 1rem;
+  background-color: #36024e;
+  color: aliceblue;
+  font-weight: 600;
+  /* margin-top: 1.5rem; */
+  justify-items: flex-end;
+  padding: 1rem 2rem;
+  border-radius: var(--br);
+  overflow: hidden;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+/* .expense__form--btn::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+} */
+
+.expense__form--btn:hover,
+.expense__form--btn:focus {
+  box-shadow: 0 5px 15px rgba(13, 1, 35, 0.5);
+  /* opacity: 1; */
+}
