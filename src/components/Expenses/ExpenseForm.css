@@ -22,6 +22,12 @@
 }
 
 .expense__form--input:has(.expense__form--btn) {
+  /* gap: 2rem; */
+  justify-content: center;
+}
+
+.expense__form--input:has(.expense__form--btn + .expense__form--btn) {
+  gap: 2rem;
   justify-content: end;
 }
 
@@ -57,7 +63,7 @@
 }
 
 .expense__form--btn {
-  display: block;
+  display: inline-block;
   position: relative;
   border: none;
   font-size: 1rem;

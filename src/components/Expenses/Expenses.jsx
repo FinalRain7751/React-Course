@@ -18,8 +18,6 @@ const Expenses = (props) => {
           (item) => item.date.getFullYear() === Number(selectedYear)
         );
 
-  console.log(filteredExpenses);
-
   const yearSelectHandler = (year) => {
     setSelectedYear(year);
   };
