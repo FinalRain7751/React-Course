@@ -1,0 +1,38 @@
+.chart {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 1rem 3rem;
+  border-radius: var(--br);
+  background-color: rgb(206, 181, 230);
+}
+
+.chart-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.bar {
+  /* --height: 70%; */
+  position: relative;
+  width: 1.2rem;
+  height: 10rem;
+  outline: 1px solid rgb(36, 36, 75);
+  background-color: rgb(188, 150, 225);
+  border-radius: var(--br);
+  overflow: hidden;
+}
+
+.bar::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: var(--height, 0);
+  background-color: rgb(115, 26, 197);
+  transition: height 0.3s ease;
+}
