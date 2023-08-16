@@ -1,0 +1,25 @@
+.form__card {
+  background-image: linear-gradient(
+    var(--clr-accent-600),
+    var(--clr-accent-500)
+  );
+  padding: 2rem 0;
+  border-radius: var(--br);
+}
+
+.form__input {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.form__input > * {
+  width: 40%;
+}
+
+.form__submit {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}

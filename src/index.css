@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Roboto+Condensed:wght@400;700&display=swap");
+
+:root {
+  --br: 12px;
+  --gap: 1.5rem;
+  --clr-neutral-100: white;
+  --clr-neutral-200: #d9f5ee;
+  --clr-primary-300: #303b37;
+  --clr-primary-400: #1a1f1d;
+  --clr-accent-500: #2b996d;
+  --clr-accent-600: #307e6c;
+  --clr-accent-700: #1f584b;
+  --clr-accent-800: #17493d;
+  --ff: "Quicksand";
+  --fs-400: 0.75rem;
+  --fs-500: 1rem;
+  --fs-600: 1.25rem;
+  --fs-700: 1.5rem;
+  --fw-400: 400;
+  --fw-500: 500;
+  --fw-600: 600;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--ff);
+  font-size: var(--fs-400);
+  font-weight: var(--fw-400);
+  color: var(--clr-neutral-200);
+  background-image: radial-gradient(
+    var(--clr-accent-700) 10%,
+    var(--clr-accent-800)
+  );
+}
+
+.main {
+  max-width: 600px;
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 4rem;
+  background: none;
+}
+
+.flow-content > * + * {
+  margin-top: var(--gap);
+}

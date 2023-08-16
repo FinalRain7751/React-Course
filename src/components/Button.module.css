@@ -1,0 +1,41 @@
+.btn {
+  position: relative;
+  background: none;
+  display: inline-block;
+  border-radius: var(--br);
+  text-transform: capitalize;
+  padding: 0.5rem 1.5rem;
+  font-family: inherit;
+  font-size: var(--fs-400);
+  font-weight: var(--fw-600);
+  color: var(--clr-neutral-100);
+  border: none;
+  overflow: hidden;
+  transition: backgrond 0.5s ease-in;
+}
+
+.btn p {
+  position: inherit;
+  inset: 0;
+  z-index: 10;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--clr-accent-800);
+  opacity: 0;
+  transition: opacity 0.3s ease-in;
+}
+
+.btn:hover::before,
+.btm:focus::before {
+  opacity: 1;
+  box-shadow: 5px 15px 20px white;
+}
+
+.btn:hover,
+.btm:focus {
+  box-shadow: 3px 3px 15px var(--clr-primary-400);
+}

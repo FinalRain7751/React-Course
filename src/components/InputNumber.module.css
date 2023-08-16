@@ -1,0 +1,30 @@
+.form__input--fields {
+  font-family: inherit;
+}
+
+.form__input--fields-label {
+  display: block;
+  padding: 0.3rem;
+  text-align: start;
+  text-transform: uppercase;
+  /* font-family: inherit; */
+  font-size: var(--fs-400);
+  font-weight: var(--fw-600);
+}
+
+.form__input--fields-box {
+  width: 100%;
+  padding: 0 0.5rem;
+  font-size: var(--fs-500);
+  line-height: 2rem;
+  border-radius: var(--br);
+  border: 1px solid var(--clr-neutral-100);
+  background: none;
+  color: var(--clr-neutral-100);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

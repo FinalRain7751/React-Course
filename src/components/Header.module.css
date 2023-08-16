@@ -1,0 +1,14 @@
+.header__logo img {
+  display: block;
+  margin: 0 auto;
+  height: auto;
+  width: 5rem;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+.header__heading h3 {
+  font-size: var(--fs-600);
+  font-weight: var(--fw-600);
+  color: var(--clr-neutral-100);
+}
