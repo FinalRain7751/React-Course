@@ -3,14 +3,11 @@ import React from "react";
 import { Task } from "../../models/project";
 import TaskItem from "./TaskItem";
 
-const TaskList: React.FC<{ items: Task[]; projectId: string }> = ({
-  items,
-  projectId,
-}) => {
+const TaskList: React.FC<{ items: Task[] }> = ({ items }) => {
   return (
-    <ul>
+    <ul className="task-list">
       {items.map((task) => (
-        <TaskItem key={task.id} item={task} projectId={projectId} />
+        <TaskItem key={task.id} item={task} />
       ))}
     </ul>
   );

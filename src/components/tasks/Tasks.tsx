@@ -4,15 +4,12 @@ import TaskList from "./TaskList";
 import NewTask from "./NewTask";
 import { Task } from "../../models/project";
 
-const Tasks: React.FC<{ items: Task[]; projectId: string }> = ({
-  items,
-  projectId,
-}) => {
+const Tasks: React.FC<{ items: Task[] }> = ({ items }) => {
   return (
-    <div>
-      <h1>Tasks</h1>
-      <NewTask projectId={projectId} />
-      <TaskList items={items} projectId={projectId} />
+    <div className="tasks">
+      <h3>Tasks</h3>
+      <NewTask />
+      <TaskList items={items} />
     </div>
   );
 };

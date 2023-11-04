@@ -1,21 +1,19 @@
 import React, { useContext } from "react";
 import { Task } from "../../models/project";
 import { ProjectContext } from "../../store/project-context";
+import Button from "../UI/Button";
 
-const TaskItem: React.FC<{ item: Task; projectId: string }> = ({
-  item,
-  projectId,
-}) => {
+const TaskItem: React.FC<{ item: Task }> = ({ item }) => {
   const projectCtx = useContext(ProjectContext);
 
   const deleteHandler = () => {
-    projectCtx.removeTask(projectId, item.id);
+    projectCtx.removeTask(item.projectId, item.id);
   };
 
   return (
     <li>
       <span>{item.text}</span>
-      <button onClick={deleteHandler}>Clear</button>
+      <Button onClick={deleteHandler}>Clear</Button>
     </li>
   );
 };

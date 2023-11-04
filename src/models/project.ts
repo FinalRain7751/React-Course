@@ -1,9 +1,11 @@
 export class Task {
   id: string;
+  projectId: string;
   text: string;
 
-  constructor(text: string) {
+  constructor(projectId: string, text: string) {
     this.id = new Date().toISOString();
+    this.projectId = projectId;
     this.text = text;
   }
 }
@@ -15,18 +17,12 @@ export class Project {
   dueDate: Date;
   tasks: Task[];
 
-  constructor(
-    id: string,
-    title: string,
-    description: string,
-    dueDate: string,
-    tasks: Task[]
-  ) {
-    this.id = id;
-    this.title = title;
-    this.description = description;
-    this.dueDate = new Date(dueDate);
-    this.tasks = tasks;
+  constructor(project: Project) {
+    this.id = project.id;
+    this.title = project.title;
+    this.description = project.description;
+    this.dueDate = project.dueDate;
+    this.tasks = project.tasks;
   }
 }
 

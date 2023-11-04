@@ -31,13 +31,13 @@ const NewProject: React.FC = () => {
     e.preventDefault();
 
     if (titleIsValid && descriptionIsValid && dueDateIsValid) {
-      const newProject = new Project(
-        new Date().toISOString(),
+      const newProject = new Project({
+        id: new Date().toISOString(),
         title,
         description,
-        dueDate,
-        []
-      );
+        dueDate: new Date(dueDate),
+        tasks: [],
+      });
 
       projectCtx.addProject(newProject);
 

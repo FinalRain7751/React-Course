@@ -10,8 +10,11 @@ const ProjectListItem: React.FC<{ item: Project }> = (props) => {
   };
 
   return (
-    <li>
-      <a onClick={handleClick}>{props.item.title}</a>
+    <li
+      onClick={handleClick}
+      className={projectCtx.isActive === props.item.id ? "active" : ""}
+    >
+      {props.item.title}
     </li>
   );
 };

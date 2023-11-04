@@ -1,7 +1,8 @@
 import React, { useContext, useRef, useState } from "react";
 import { ProjectContext } from "../../store/project-context";
+import Button from "../UI/Button";
 
-const NewTask: React.FC<{ projectId: string }> = ({ projectId }) => {
+const NewTask: React.FC = () => {
   const taskInputRef = useRef<HTMLInputElement>(null);
   const projectCtx = useContext(ProjectContext);
 
@@ -15,20 +16,21 @@ const NewTask: React.FC<{ projectId: string }> = ({ projectId }) => {
     e.preventDefault();
 
     if (enteredTask.trim().length !== 0) {
+      const projectId = projectCtx.isActive;
       projectCtx.addTask(projectId, enteredTask);
       taskInputRef.current!.value = "";
     }
   };
 
   return (
-    <form onSubmit={submitHandler}>
+    <form onSubmit={submitHandler} className="task-form">
       <input
         type="text"
         required
         ref={taskInputRef}
         onChange={taskInputChangeHandler}
       />
-      <button>Add Task</button>
+      <Button>Add Task</Button>
     </form>
   );
 };

@@ -3,6 +3,7 @@ import { Project } from "../../models/project";
 
 import Tasks from "../tasks/Tasks";
 import { ProjectContext } from "../../store/project-context";
+import Button from "../UI/Button";
 
 const ProjectDetails: React.FC<{ item: Project }> = ({ item }) => {
   const projectCtx = useContext(ProjectContext);
@@ -12,13 +13,13 @@ const ProjectDetails: React.FC<{ item: Project }> = ({ item }) => {
 
   return (
     <>
-      <div>
-        <div>
+      <div className="project-detail">
+        <div className="project-header">
           <h1>{item.title}</h1>
-          <button onClick={deleteHandler}>Delete</button>
+          <Button onClick={deleteHandler}>Delete</Button>
         </div>
 
-        <p>
+        <p className="dueDate">
           {item.dueDate.toLocaleDateString("en-IN", {
             day: "numeric",
             month: "short",
@@ -27,7 +28,7 @@ const ProjectDetails: React.FC<{ item: Project }> = ({ item }) => {
         </p>
         <p>{item.description}</p>
       </div>
-      <Tasks items={item.tasks} projectId={item.id} />
+      <Tasks items={item.tasks} />
     </>
   );
 };

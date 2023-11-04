@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Project, Task } from "../models/project";
 
 type ProjectContextObject = {
-  isActive: string | boolean;
+  isActive: string;
   isNewProject: boolean;
   projects: Project[];
   addProject: (project: Project) => void;
@@ -15,7 +15,7 @@ type ProjectContextObject = {
 };
 
 export const ProjectContext = React.createContext<ProjectContextObject>({
-  isActive: false,
+  isActive: "",
   isNewProject: true,
   projects: [],
   addProject: (project: Project) => {},
@@ -35,6 +35,8 @@ export const ProjectContextProvider: React.FC = (props) => {
   useEffect(() => {
     if (projects.length === 0) {
       setIsNewProject(true);
+    } else if (projects.length === 1) {
+      setIsActive(projects[0].id);
     }
   }, [projects]);
 
@@ -45,6 +47,7 @@ export const ProjectContextProvider: React.FC = (props) => {
 
   const newProjectHandler = () => {
     setIsNewProject(true);
+    setIsActive("");
   };
 
   const addProjectHandler = (project: Project) => {
@@ -76,39 +79,31 @@ export const ProjectContextProvider: React.FC = (props) => {
   };
 
   const addTaskHandler = (projectId: string, text: string) => {
-    const newTask = new Task(text);
-
+    const newTask = new Task(projectId, text);
     const project = projects.find((item) => item.id === projectId);
 
-    const updatedProject = { ...project, tasks: [...project!.tasks, newTask] };
-
-    updateProjectHandler(
-      new Project(
-        updatedProject.id,
-        updatedProject.title,
-        updatedProject.description,
-        updatedProject.dueDate,
-        updatedProject.tasks
-      )
-    );
+    if (project) {
+      const updatedProject = {
+        ...project,
+        tasks: [...project!.tasks, newTask],
+      };
+      updateProjectHandler(new Project(updatedProject));
+    }
   };
 
   const removeTaskHandler = (projectId: string, id: string) => {
     const project = projects.find((item) => item.id === projectId);
 
-    const updatedTasks = project?.tasks.filter((task) => task.id !== id);
+    if (!project) return;
 
-    const updatedProject = { ...project, tasks: updatedTasks };
+    const updatedTasks = project.tasks.filter((task) => task.id !== id);
 
-    updateProjectHandler(
-      new Project(
-        updatedProject.id,
-        updatedProject.title,
-        updatedProject.description,
-        updatedProject.dueDate,
-        updatedProject.tasks
-      )
-    );
+    const updatedProject = {
+      ...project,
+      tasks: updatedTasks,
+    };
+
+    updateProjectHandler(new Project(updatedProject));
   };
 
   const projectContextValue: ProjectContextObject = {
