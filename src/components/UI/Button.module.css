@@ -5,11 +5,12 @@
   font-weight: 500;
   background-color: transparent;
 
-  padding: 0.35rem 0.7rem;
-  border-radius: 10px;
+  padding: var(--padding-v, 0.35rem) var(--padding-h, 0.7rem);
+  border-radius: var(--br, 10px);
 }
 
 .btn:hover,
 .btn:focus {
   background-color: var(--btn-bg);
+  color: var(--btn-fg);
 }

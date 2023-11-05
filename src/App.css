@@ -113,3 +113,41 @@ main {
 .task-list > li:focus {
   background-color: rgb(206, 206, 203);
 }
+
+.new-project {
+  --btn-bg: rgb(57, 55, 55);
+  --btn-fg: white;
+  --padding-v: 0.75rem;
+  --padding-h: 1.5rem;
+  --br: 7.5px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.new-project .form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.new-project .project-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+#projectDescription {
+  --lh: 100px;
+  resize: none;
+  scroll-behavior: auto;
+}
+
+.new-project .project-form label {
+  display: block;
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: 600;
+}

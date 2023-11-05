@@ -1,6 +1,7 @@
 import React, { useContext, useRef, useState } from "react";
 import { ProjectContext } from "../../store/project-context";
 import Button from "../UI/Button";
+import Input from "../UI/Input";
 
 const NewTask: React.FC = () => {
   const taskInputRef = useRef<HTMLInputElement>(null);
@@ -24,7 +25,7 @@ const NewTask: React.FC = () => {
 
   return (
     <form onSubmit={submitHandler} className="task-form">
-      <input
+      <Input
         type="text"
         required
         ref={taskInputRef}
