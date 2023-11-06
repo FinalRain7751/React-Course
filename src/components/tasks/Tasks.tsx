@@ -10,13 +10,13 @@ const Tasks: React.FC<{ items: Task[] }> = ({ items }) => {
 
   const tasks = projectCtx.projects.find(
     (project) => project.id === projectCtx.isActive
-  )!.tasks;
+  )?.tasks;
 
   return (
     <div className="tasks">
       <h3>Tasks</h3>
       <NewTask />
-      {tasks!.length !== 0 && <TaskList items={items} />}
+      {tasks && tasks.length !== 0 && <TaskList items={items} />}
     </div>
   );
 };

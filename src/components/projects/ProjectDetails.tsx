@@ -20,7 +20,7 @@ const ProjectDetails: React.FC<{ item: Project }> = ({ item }) => {
         </div>
 
         <p className="dueDate">
-          {item.dueDate.toLocaleDateString("en-IN", {
+          {new Date(item.dueDate).toLocaleDateString("en-IN", {
             day: "numeric",
             month: "short",
             year: "numeric",

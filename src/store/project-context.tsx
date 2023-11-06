@@ -27,16 +27,68 @@ export const ProjectContext = React.createContext<ProjectContextObject>({
   newProjectHandler: () => {},
 });
 
+const url: string =
+  "https://project-manager-app-49623-default-rtdb.asia-southeast1.firebasedatabase.app/projects2.json";
+
+let isInitial = true;
+
 export const ProjectContextProvider: React.FC = (props) => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [isActive, setIsActive] = useState("");
   const [isNewProject, setIsNewProject] = useState(true);
 
   useEffect(() => {
-    if (projects.length === 0) {
-      setIsNewProject(true);
-    } else if (projects.length === 1) {
-      setIsActive(projects[0].id);
+    const getHttp: (url: string) => void = async (url: string) => {
+      const response = await fetch(url);
+
+      if (!response.ok) {
+        console.log("Could not fetch data.");
+        return;
+      }
+
+      const resData = await response.json();
+      const projects: Project[] = resData?.data ?? [];
+
+      if (projects.length !== 0) {
+        setIsNewProject(false);
+        setIsActive(projects[0].id);
+      }
+
+      setProjects(projects);
+    };
+
+    console.log("Data fetched");
+    getHttp(url);
+  }, []);
+
+  useEffect(() => {
+    const sendHttp: (url: string, data: Project[]) => void = async (
+      url,
+      projects
+    ) => {
+      const response = await fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          data: projects,
+        }),
+      });
+
+      if (response.ok) console.log("Projects updated");
+    };
+
+    if (isInitial) {
+      isInitial = false;
+    } else {
+      sendHttp(url, projects);
+
+      if (projects.length === 0) {
+        setIsNewProject(true);
+      } else if (projects.length === 1) {
+        setIsActive(projects[0].id);
+      }
     }
   }, [projects]);
 
